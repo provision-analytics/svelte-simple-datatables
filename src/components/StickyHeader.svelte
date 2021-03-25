@@ -26,7 +26,7 @@
                 </th>
             {/each}
         </tr>
-        {#if $options.columnFilter === true}
+        {#if $options.columnFilters === true}
             <tr>
                 {#each $columns as th}
                     <th class="filter" style="width:{th.width};height:25px;">

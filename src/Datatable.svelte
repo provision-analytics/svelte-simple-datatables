@@ -4,6 +4,7 @@
 	import Search from './components/Search.svelte'
 	import Pagination from './components/Pagination.svelte'
 	import StickyHeader from './components/StickyHeader.svelte'
+	import ColumnFilterInputs from './ColumnFilterInputs.svelte';
 	import { onMount, onDestroy } from 'svelte'
 	export let data = []
 	export let settings = {}
@@ -25,6 +26,9 @@
 			<StickyHeader/>
 		{/if}
 		<table>
+			{#if $options.columnFilters}
+				<ColumnFilterInputs />
+			{/if}
 			<slot />
 		</table>
 	</article>
