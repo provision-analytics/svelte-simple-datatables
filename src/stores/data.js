@@ -53,7 +53,6 @@ export const filtered = derived(
 		if ($local.length > 0) {
 			$local.forEach((filter) => {
 				return ($data = $data.filter((item) => {
-					console.log(item)
 					return (
 						filter
 							.key(item)
