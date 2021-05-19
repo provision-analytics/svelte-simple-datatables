@@ -4,7 +4,7 @@
 	import Search from './components/Search.svelte'
 	import Pagination from './components/Pagination.svelte'
 	import StickyHeader from './components/StickyHeader.svelte'
-	import ColumnFilterInputs from './ColumnFilterInputs.svelte';
+	import ColumnFilterInputs from './ColumnFilterInputs.svelte'
 	import { onMount, onDestroy } from 'svelte'
 	export let data = []
 	export let settings = {}
@@ -13,17 +13,21 @@
 		datatable.setRows(data)
 		options.update(settings)
 	}
-	onMount(() => datatable.init() )
+	onMount(() => datatable.init())
 	onDestroy(() => datatable.reset())
 </script>
 
-<section class="datatable {classList}" class:scroll-y={$options.scrollY} class:css={$options.css}>
+<section
+	class="datatable {classList}"
+	class:scroll-y={$options.scrollY}
+	class:css={$options.css}
+>
 	{#if $options.blocks.searchInput === true}
 		<Search />
 	{/if}
 	<article class="dt-table">
 		{#if $options.scrollY}
-			<StickyHeader/>
+			<StickyHeader />
 		{/if}
 		<table>
 			{#if $options.columnFilters}
@@ -35,6 +39,7 @@
 	{#if $options.blocks.paginationRowCount === true || $options.blocks.paginationButtons === true}
 		<Pagination />
 	{/if}
+	<slot name="pagination" />
 </section>
 
 <style>
@@ -44,8 +49,8 @@
 	.css.datatable {
 		background: #fff;
 	}
-	.datatable.scroll-y{
-		height:160px;
+	.datatable.scroll-y {
+		height: 160px;
 	}
 	.datatable * {
 		box-sizing: border-box;
